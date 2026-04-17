@@ -1,0 +1,59 @@
+[1 - Suricata-Main] 2026-03-02 18:49:26 Notice: suricata: This is Suricata version 8.0.3 RELEASE running in USER mode
+[1 - Suricata-Main] 2026-03-02 18:49:26 Info: cpu: CPUs/cores online: 12
+[1 - Suricata-Main] 2026-03-02 18:49:26 Info: suricata: Setting engine mode to IDS mode by default
+[1 - Suricata-Main] 2026-03-02 18:49:26 Info: exception-policy: master exception-policy set to: auto
+[1 - Suricata-Main] 2026-03-02 18:49:26 Info: logopenfile: fast output device (regular) initialized: fast.log
+[1 - Suricata-Main] 2026-03-02 18:49:26 Info: logopenfile: eve-log output device (regular) initialized: eve.json
+[1 - Suricata-Main] 2026-03-02 18:49:26 Info: logopenfile: stats output device (regular) initialized: stats.log
+[1 - Suricata-Main] 2026-03-02 18:49:26 Warning: detect: No rule files match the pattern /var/lib/suricata/rules/suricata.rules
+[1 - Suricata-Main] 2026-03-02 18:49:26 Warning: detect: 1 rule files specified, but no rules were loaded!
+[1 - Suricata-Main] 2026-03-02 18:49:26 Info: threshold-config: Threshold config parsed: 0 rule(s) found
+[1 - Suricata-Main] 2026-03-02 18:49:26 Info: detect: 0 signatures processed. 0 are IP-only rules, 0 are inspecting packet payload, 0 inspect application layer, 0 are decoder event only
+[1 - Suricata-Main] 2026-03-02 18:49:26 Notice: mpm-hs: Rule group caching - loaded: 0 newly cached: 0 total cacheable: 0
+[16 - RX#01] 2026-03-02 18:49:26 Info: pcap: Starting file run for /data/plc_attack.pcap
+[1 - Suricata-Main] 2026-03-02 18:49:26 Notice: threads: Threads created -> RX: 1 W: 12 FM: 1 FR: 1   Engine started.
+[16 - RX#01] 2026-03-02 18:49:26 Info: checksum: No packets with invalid checksum, assuming checksum offloading is NOT used
+[16 - RX#01] 2026-03-02 18:49:26 Info: pcap: pcap file /data/plc_attack.pcap end of file reached (pcap err code 0)
+[1 - Suricata-Main] 2026-03-02 18:49:26 Notice: suricata: Signal Received.  Stopping engine.
+[1 - Suricata-Main] 2026-03-02 18:49:26 Info: suricata: time elapsed 0.125s
+[16 - RX#01] 2026-03-02 18:49:26 Notice: pcap: read 1 file, 61190 packets, 4700379 bytes
+[1 - Suricata-Main] 2026-03-02 18:49:26 Info: counters: Alerts: 0
+[1 - Suricata-Main] 2026-03-02 18:52:51 Notice: suricata: This is Suricata version 8.0.3 RELEASE running in USER mode
+[1 - Suricata-Main] 2026-03-02 18:52:51 Info: cpu: CPUs/cores online: 12
+[1 - Suricata-Main] 2026-03-02 18:52:51 Info: suricata: Setting engine mode to IDS mode by default
+[1 - Suricata-Main] 2026-03-02 18:52:51 Info: exception-policy: master exception-policy set to: auto
+[1 - Suricata-Main] 2026-03-02 18:52:51 Info: logopenfile: fast output device (regular) initialized: fast.log
+[1 - Suricata-Main] 2026-03-02 18:52:51 Info: logopenfile: eve-log output device (regular) initialized: eve.json
+[1 - Suricata-Main] 2026-03-02 18:52:51 Info: logopenfile: stats output device (regular) initialized: stats.log
+[1 - Suricata-Main] 2026-03-02 18:52:51 Warning: detect: No rule files match the pattern /var/lib/suricata/rules/suricata.rules
+[1 - Suricata-Main] 2026-03-02 18:52:51 Warning: detect: 1 rule files specified, but no rules were loaded!
+[1 - Suricata-Main] 2026-03-02 18:52:51 Info: threshold-config: Threshold config parsed: 0 rule(s) found
+[1 - Suricata-Main] 2026-03-02 18:52:51 Info: detect: 0 signatures processed. 0 are IP-only rules, 0 are inspecting packet payload, 0 inspect application layer, 0 are decoder event only
+[1 - Suricata-Main] 2026-03-02 18:52:51 Notice: mpm-hs: Rule group caching - loaded: 0 newly cached: 0 total cacheable: 0
+[16 - RX#01] 2026-03-02 18:52:51 Info: pcap: Starting file run for /data/plc_attack.pcap
+[1 - Suricata-Main] 2026-03-02 18:52:51 Notice: threads: Threads created -> RX: 1 W: 12 FM: 1 FR: 1   Engine started.
+[16 - RX#01] 2026-03-02 18:52:51 Info: checksum: No packets with invalid checksum, assuming checksum offloading is NOT used
+[16 - RX#01] 2026-03-02 18:52:51 Info: pcap: pcap file /data/plc_attack.pcap end of file reached (pcap err code 0)
+[1 - Suricata-Main] 2026-03-02 18:52:51 Notice: suricata: Signal Received.  Stopping engine.
+[1 - Suricata-Main] 2026-03-02 18:52:51 Info: suricata: time elapsed 0.124s
+[16 - RX#01] 2026-03-02 18:52:51 Notice: pcap: read 1 file, 61190 packets, 4700379 bytes
+[1 - Suricata-Main] 2026-03-02 18:52:51 Info: counters: Alerts: 0
+[1 - Suricata-Main] 2026-03-02 18:54:17 Notice: suricata: This is Suricata version 8.0.3 RELEASE running in USER mode
+[1 - Suricata-Main] 2026-03-02 18:54:17 Info: cpu: CPUs/cores online: 12
+[1 - Suricata-Main] 2026-03-02 18:54:17 Info: suricata: Setting engine mode to IDS mode by default
+[1 - Suricata-Main] 2026-03-02 18:54:17 Info: exception-policy: master exception-policy set to: auto
+[1 - Suricata-Main] 2026-03-02 18:54:17 Info: logopenfile: fast output device (regular) initialized: fast.log
+[1 - Suricata-Main] 2026-03-02 18:54:17 Info: logopenfile: eve-log output device (regular) initialized: eve.json
+[1 - Suricata-Main] 2026-03-02 18:54:17 Info: logopenfile: stats output device (regular) initialized: stats.log
+[1 - Suricata-Main] 2026-03-02 18:54:23 Info: detect: 1 rule files processed. 48793 rules successfully loaded, 0 rules failed, 0 rules skipped
+[1 - Suricata-Main] 2026-03-02 18:54:23 Info: threshold-config: Threshold config parsed: 0 rule(s) found
+[1 - Suricata-Main] 2026-03-02 18:54:23 Info: detect: 48798 signatures processed. 1242 are IP-only rules, 4477 are inspecting packet payload, 42844 inspect application layer, 110 are decoder event only
+[1 - Suricata-Main] 2026-03-02 18:54:33 Notice: mpm-hs: Rule group caching - loaded: 0 newly cached: 113 total cacheable: 113
+[16 - RX#01] 2026-03-02 18:54:33 Info: pcap: Starting file run for /data/plc_attack.pcap
+[1 - Suricata-Main] 2026-03-02 18:54:33 Notice: threads: Threads created -> RX: 1 W: 12 FM: 1 FR: 1   Engine started.
+[16 - RX#01] 2026-03-02 18:54:33 Info: checksum: No packets with invalid checksum, assuming checksum offloading is NOT used
+[16 - RX#01] 2026-03-02 18:54:34 Info: pcap: pcap file /data/plc_attack.pcap end of file reached (pcap err code 0)
+[1 - Suricata-Main] 2026-03-02 18:54:34 Notice: suricata: Signal Received.  Stopping engine.
+[1 - Suricata-Main] 2026-03-02 18:54:34 Info: suricata: time elapsed 0.406s
+[16 - RX#01] 2026-03-02 18:54:34 Notice: pcap: read 1 file, 61190 packets, 4700379 bytes
+[1 - Suricata-Main] 2026-03-02 18:54:34 Info: counters: Alerts: 114369

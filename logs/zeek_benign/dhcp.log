@@ -1,0 +1,21 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	dhcp
+#open	2026-03-02-18-47-27
+#fields	ts	uids	client_addr	server_addr	mac	host_name	client_fqdn	domain	requested_addr	assigned_addr	lease_time	client_message	server_message	msg_types	duration
+#types	time	set[string]	addr	addr	string	string	string	string	addr	addr	interval	string	string	vector[string]	interval
+1770909876.546869	CwDnC83Z5MnwTB6RD1	192.168.0.1	-	98:ba:5f:c1:96:27	TL-SG108E	-	-	-	-	-	-	-	DISCOVER	0.000000
+1770909881.550459	CwDnC83Z5MnwTB6RD1	192.168.0.1	-	98:ba:5f:c1:96:27	TL-SG108E	-	-	-	-	-	-	-	DISCOVER	0.000000
+1770909891.560775	CwDnC83Z5MnwTB6RD1	192.168.0.1	-	98:ba:5f:c1:96:27	TL-SG108E	-	-	-	-	-	-	-	DISCOVER	0.000000
+1770909886.554571	CwDnC83Z5MnwTB6RD1	192.168.0.1	-	98:ba:5f:c1:96:27	TL-SG108E	-	-	-	-	-	-	-	DISCOVER	0.000000
+1770909896.561895	CwDnC83Z5MnwTB6RD1	192.168.0.1	-	98:ba:5f:c1:96:27	TL-SG108E	-	-	-	-	-	-	-	DISCOVER	0.000000
+1770909901.565689	CwDnC83Z5MnwTB6RD1	192.168.0.1	-	98:ba:5f:c1:96:27	TL-SG108E	-	-	-	-	-	-	-	DISCOVER	0.000000
+1770909906.569279	CwDnC83Z5MnwTB6RD1	192.168.0.1	-	98:ba:5f:c1:96:27	TL-SG108E	-	-	-	-	-	-	-	DISCOVER	0.000000
+1770909911.576056	CwDnC83Z5MnwTB6RD1	192.168.0.1	-	98:ba:5f:c1:96:27	TL-SG108E	-	-	-	-	-	-	-	DISCOVER	0.000000
+1770909916.576844	CwDnC83Z5MnwTB6RD1	192.168.0.1	-	98:ba:5f:c1:96:27	TL-SG108E	-	-	-	-	-	-	-	DISCOVER	0.000000
+1770909921.580689	CwDnC83Z5MnwTB6RD1	192.168.0.1	-	98:ba:5f:c1:96:27	TL-SG108E	-	-	-	-	-	-	-	DISCOVER	0.000000
+1770909926.584498	CwDnC83Z5MnwTB6RD1	192.168.0.1	-	98:ba:5f:c1:96:27	TL-SG108E	-	-	-	-	-	-	-	DISCOVER	0.000000
+1770909931.591053	CwDnC83Z5MnwTB6RD1	192.168.0.1	-	98:ba:5f:c1:96:27	TL-SG108E	-	-	-	-	-	-	-	DISCOVER	0.000000
+#close	2026-03-02-18-47-27
