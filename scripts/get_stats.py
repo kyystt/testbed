@@ -1,8 +1,8 @@
 import pandas as pd
 
 # Carrega os globais para vermos o resumo
-df_b = pd.read_csv("super_baseline_benign.csv")['global_delta_ms'].dropna()
-df_a = pd.read_csv("super_baseline_attack.csv")['global_delta_ms'].dropna()
+df_b = pd.read_csv("../super_baseline_benign.csv")['global_delta_ms'].dropna()
+df_a = pd.read_csv("../super_baseline_attack.csv")['global_delta_ms'].dropna()
 
 print("=== BENIGN STATS ===")
 print(df_b.describe())

@@ -61,8 +61,8 @@ def plot_row(row_idx, benign_data, attack_data, title, target_mean, add_arrows=F
 
 # --- ROW 1: Aggregate Flow ---
 print("[*] Plotting Aggregate Flow...")
-df_b_agg = pd.read_csv("super_baseline_benign.csv")['global_delta_ms'].dropna()
-df_a_agg = pd.read_csv("super_baseline_attack.csv")['global_delta_ms'].dropna()
+df_b_agg = pd.read_csv("../super_baseline_benign.csv")['global_delta_ms'].dropna()
+df_a_agg = pd.read_csv("../super_baseline_attack.csv")['global_delta_ms'].dropna()
 plot_row(0, df_b_agg, df_a_agg, "Line 1: Global Aggregate Flow", target_mean=1.0)
 
 # --- ROWS 2, 3, 4: Vantage Points (Filtering ONLY for PLC Source to highlight the anomaly) ---
@@ -73,8 +73,8 @@ for i, vp in enumerate(vantage_points):
     row_idx = i + 1
     
     try:
-        df_b = pd.read_csv(f"super_baseline_benign_{vp}.csv")
-        df_a = pd.read_csv(f"super_baseline_attack_{vp}.csv")
+        df_b = pd.read_csv(f"../super_baseline_benign_{vp}.csv")
+        df_a = pd.read_csv(f"../super_baseline_attack_{vp}.csv")
         
         # Filter for PLC Source
         plc_b = df_b[(df_b['src_mac'] == MAC_PLC) & (df_b['source_delta_ms'] > 0)]['source_delta_ms']
