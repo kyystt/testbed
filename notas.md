@@ -1,3 +1,8 @@
+# 30/06/2026
+
+Verificar as configurações de espelhamento de porta https://www.tp-link.com/us/support/faq/527/
+
+
 # 19/06/2026
 
 ## 1. ARP Spoofing (Camada 3)
