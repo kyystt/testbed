@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define os diretórios onde estão os PCAPs
-BENIGN_DIR="capturas/benign"
-ATTACK_DIR="capturas/attack"
+BENIGN_DIR="capturas/benign/limpos"
+ATTACK_DIR="capturas/attack/limpos"
 
 # Nomes dos 3 pontos de coleta (como o Victor escreveu nos arquivos)
 PONTOS=("vfd" "bridge" "plc")

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define your directories (change these if your folders are named differently)
-BENIGN_DIR="capturas/benign"
-ATTACK_DIR="capturas/attack"
+BENIGN_DIR="capturas/benign/limpos"
+ATTACK_DIR="capturas/attack/limpos"
 
 # Define the final master output files
 BENIGN_MASTER="super_baseline_benign.csv"

@@ -1,7 +1,7 @@
 # 19/06/2026
 
 ## 1. ARP Spoofing (Camada 3)
-* **Objetivo:** Tentar interceptar o tráfego de controle entre o CLP (192.168.0.5) e o Inversor (192.168.0.2) via envenenamento de cache ARP
+* **Objetivo:** Tentar interceptar o tráfego de controle entre o PLC (192.168.0.5) e o Inversor (192.168.0.2) via envenenamento de cache ARP
 * **Log da tentativa de manipulação de tabela ARP entre o PLC (192.168.0.5) e a HMI/Drive (192.168.0.2):**
 
 ```bash
@@ -19,7 +19,7 @@ DHCP: [98:BA:5F:C1:96:27] DISCOVER
 DHCP: [98:BA:5F:C1:96:27] DISCOVER 
 DHCP: [98:BA:5F:C1:96:27] DISCOVER 
 ...
-``
+```
 
 * **Conclusão L3:** O ARP Spoofing redireciona o tráfego IP (TI), mas o tráfego de controle industrial (EtherType `0x8892`) permanece invisível ao atacante. Isso ocorre porque o PROFINET RT utiliza endereçamento L2 direto, ignorando a pilha de resolução ARP.
 
@@ -74,7 +74,7 @@ Se o atacante tentar agir como um "refletor" (receber e encaminhar o pacote para
 	0x0020:  0000 0000 0000 0000 0000 0000 0000       ..............
 ...
 ```
-* **Resultado:** O motor manteve a operação estável (sem *Bus Fault*). A captura via `tcpdump` confirmou que apenas pacotes Multicast (`01:80:c2...`) foram recebidos, enquanto os comandos de controle Unicast do CLP foram entregues exclusivamente ao hardware original.
+* **Resultado:** O motor manteve a operação estável (sem *Bus Fault*). A captura via `tcpdump` confirmou que apenas pacotes Multicast (`01:80:c2...`) foram recebidos, enquanto os comandos de controle Unicast do PLC foram entregues exclusivamente ao hardware original.
 
 Ao fazer isso, o motor continuou girando e ainda consegui mudar a velocidade pelo TIA portal, mostrando que ele não confia cegamente a porta pela tabela CAM, provavelmente deve fazer Port Binding ou MAC Locking
 
@@ -83,6 +83,7 @@ O teste do spoofing do endereço MAC em Single-NIC é ineficaz para ataques de M
 # 3. Análise do Comportamento do Switch (Hardware: TP-Link TL-SG108E)
 O switch atuou como um elemento mitigador involuntário de segurança através de dois mecanismos principais:
 
+## Hipoteses (gerado por IA): 
 * **Integridade da Tabela CAM (Port Binding Implícito):** O TL-SG108E implementa uma lógica de retenção de entrada na memória CAM. Como o fluxo de controle PROFINET é cíclico e de alta frequência (ciclos de 2.0ms), a atualização da tabela CAM pelo dispositivo legítimo é mais persistente do que a tentativa de inserção por spoofing. O switch, ao detectar o MAC em duas portas distintas (legítima vs. atacante), priorizou a porta com a persistência de fluxo original.
 * **Segregação de Unicast vs. Multicast:** O switch não realizou *flooding* de pacotes Unicast para a porta do atacante, confirmando que a lógica do ASIC (Application-Specific Integrated Circuit) filtra o tráfego ponto-a-ponto com base na porta de origem autenticada. A presença de tráfego Multicast (`LLDP/PTCP`) na captura do atacante ocorreu apenas devido à natureza de difusão de protocolos de controle de rede, não representando uma falha de isolamento de dados.
 
@@ -90,7 +91,7 @@ O switch atuou como um elemento mitigador involuntário de segurança através d
 O experimento validou que **ataques triviais de spoofing (L2/L3) são ineficazes em ambientes industriais modernos**. A resiliência da rede não depende de firewalls complexos, mas da própria arquitetura determinística e da lógica de comutação dos switches de camada 2:
 
 1.  **Impossibilidade de MitM via Software:** Em arquiteturas *Single-NIC*, a tentativa de interceptação causa uma exclusão lógica do atacante pelo hardware do switch.
-2.  **Necessidade de Ponte Física:** A impossibilidade de realizar um *Man-in-the-Middle* lógico com uma interface única confirma que a metodologia de **Ponte Transparente (Dual-NIC)** — posicionada fisicamente entre o CLP e o Inversor — é a **única via cientificamente válida** para a auditoria de tráfego e injeção de *Jitter* em redes PROFINET RT.
+2.  **Necessidade de Ponte Física:** A impossibilidade de realizar um *Man-in-the-Middle* lógico com uma interface única confirma que a metodologia de **Ponte Transparente (Dual-NIC)** — posicionada fisicamente entre o PLC e o Inversor — é a **única via cientificamente válida** para a auditoria de tráfego e injeção de *Jitter* em redes PROFINET RT.
 
 
 # 5. Auditoria de Rede e Testes de Estresse (Load Testing)
@@ -101,12 +102,15 @@ O experimento validou que **ataques triviais de spoofing (L2/L3) são ineficazes
 
 ### 5.2 Mapeamento de Topologia (Discovery)
 * **Ferramenta:** `nmap -Pn` (Scan forçado sem Ping).
-* **Observação:** O estado `filtered` reportado para todos os dispositivos (CLP e Inversor) corrobora a eficácia do *hardening* de rede. Os ativos industriais estão configurados para descartar pacotes de reconhecimento (Ping/Service Discovery), tornando-os invisíveis a escaneamentos de TI tradicionais.
+* **Observação:** O estado `filtered` reportado para todos os dispositivos (PLC e Inversor) corrobora a eficácia do *hardening* de rede. Os ativos industriais estão configurados para descartar pacotes de reconhecimento (Ping/Service Discovery), tornando-os invisíveis a escaneamentos de TI tradicionais.
 
 ### 5.3 Teste de Estresse (Denial of Service - DoS)
-* **Procedimento:** Injeção de mais de 4,4 milhões de pacotes (ICMP e UDP Flood) via `hping3` visando o Inversor e o CLP.
+* **Procedimento:** Injeção de mais de 4,4 milhões de pacotes (ICMP e UDP Flood) via `hping3` visando o Inversor e o PLC.
 * **Resultado:** 100% de perda de pacotes (Packet Loss) para o tráfego de ataque, enquanto a operação PROFINET RT permaneceu ininterrupta, sem ocorrência de *Bus Fault* ou latência observável.
 * **Conclusão de Resiliência:** A infraestrutura demonstrou imunidade a ataques de saturação de rede (Flood). A priorização de tráfego 802.1p do protocolo PROFINET e a filtragem em nível de ASIC do switch isolam o tráfego de controle crítico, garantindo a resiliência do sistema industrial mesmo sob carga extrema de tráfego "Best Effort".
 
 ## 6. Conclusão Metodológica para o Artigo
 Os experimentos validaram que **ataques triviais de spoofing (L2/L3) e injeção de carga (DoS) são ineficazes em ambientes industriais modernos**. A robustez da rede é intrínseca à arquitetura determinística dos ativos. A falha técnica em comprometer a comunicação através de ataques lógicos confirma que a metodologia de **Ponte Transparente (Dual-NIC)** é a única via cientificamente viável para a auditoria de tráfego e análise de vulnerabilidades em redes PROFINET RT, uma vez que o hardware industrial mitiga automaticamente qualquer tentativa de invasão ou saturação por software.
+
+# Proxima visita 
+- Verificar se configuração do switch se manteve (espelhamento de porta e etc)
